@@ -6,7 +6,7 @@
 /*   By: user42 <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 14:08:56 by user42            #+#    #+#             */
-/*   Updated: 2021/04/20 13:24:04 by user42           ###   ########.fr       */
+/*   Updated: 2021/04/20 17:41:43 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,11 +83,11 @@ void	test_write()
 	i = 0;
 	count = strlen(str);
 	fd[0] = 1; 
-	fd[1] = open("okfile", O_RDWR | O_CREAT);
-	fd[2] = open("error", O_RDONLY | O_CREAT);
+	fd[1] = open("./test/okfile", O_RDWR);
+	fd[2] = open("./test/error", O_RDONLY);
 	fd_ft[0] = 1; 
-	fd_ft[1] = open("okfile_ft", O_RDWR | O_CREAT);
-	fd_ft[2] = open("error_ft", O_RDONLY | O_CREAT);
+	fd_ft[1] = open("./test/okfile_ft", O_RDWR);
+	fd_ft[2] = open("./test/error_ft", O_RDONLY);
 	while (i < 3)
 	{
 		if (fd[i] == -1 || fd_ft[i] == -1)
@@ -118,20 +118,20 @@ void	test_read()
 	int test_ft;
 	
 	count = 12;
-	fd[0] = open("read_error", O_WRONLY | O_CREAT, 0664);
+	fd[0] = open("./test/read_error", O_WRONLY);
 	if (fd[0] == -1)
 	{
 		printf("OPEN failed\n");
 		return ;
 	}
 	fd[1] = 0;
-	test = open("test_read", O_RDONLY);
+	test = open("./test/test_read", O_RDONLY);
 	if (test == -1)
 	{
 		printf("OPEN failed\n");
 		return ;
 	}
-	test_ft = open("test_read_ft", O_RDONLY);
+	test_ft = open("./test/test_read_ft", O_RDONLY);
 	if (test_ft == -1)
 	{
 		printf("OPEN failed\n");
